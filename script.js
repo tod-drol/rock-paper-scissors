@@ -18,5 +18,13 @@ function getHumanChoice() {
   return humanChoice;
 }
 
-console.log(`The computer chose: ${getComputerChoice()}`);
-console.log(getHumanChoice());
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+function playRound(humanSelection, computerSelection) {
+    return `The human chose: ${humanSelection} and the computer chose: ${computerSelection}` ;
+}
+
+// console.log(`The computer chose: ${getComputerChoice()}`);
+// console.log(getHumanChoice());
+console.log(playRound(humanSelection, computerSelection));
