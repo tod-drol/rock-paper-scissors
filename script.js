@@ -4,15 +4,8 @@ let computerScore = 0;
 
 // function stores the computer choice which is randomly generated
 function getComputerChoice() {
-  let randomChoice = Math.floor(Math.random() * 3);
-
-  if (randomChoice === 1) {
-    return "Rock";
-  } else if (randomChoice === 2) {
-    return "Paper";
-  } else {
-    return "Scissors";
-  }
+  let choices = ["Rock", "Paper", "Scissors"];
+  return choices[Math.floor(Math.random() * 2)];
 }
 
 // function stores the value the user inputs through the prompt
@@ -24,20 +17,14 @@ function getHumanChoice() {
 function playGame() {
   // function plays single rounds using conditional statements and the stored values in the selection variables to select a winner and increases the winner's score
   function playRound(humanSelection, computerSelection) {
-    if (humanSelection === "rock" && computerSelection === "scissors") {
-      humanScore++;
-      console.log("You Won this round!");
-    } else if (humanSelection === "paper" && computerSelection === "rock") {
-      humanScore++;
-      console.log("You Won this round!");
-    } else if (humanSelection === "scissors" && computerSelection === "paper") {
-      humanScore++;
-      console.log("You Won this round!");
-    } else if (
-      (humanSelection === "rock" && computerSelection === "rock") ||
-      (humanSelection === "paper" && computerSelection === "paper") ||
-      (humanSelection === "scissors" && computerSelection === "scissors")
+    if (
+      (humanSelection === "rock" && computerSelection === "scissors") ||
+      (humanSelection === "paper" && computerSelection === "rock") ||
+      (humanSelection === "scissors" && computerSelection === "paper")
     ) {
+      humanScore++;
+      console.log("You Won this round!");
+    } else if (humanSelection === computerSelection) {
       console.log("You tied this round!");
     } else {
       computerScore++;
@@ -46,9 +33,8 @@ function playGame() {
   }
 
   // stores the value both functions return and use it to define the round winner
-  // const humanSelection = getHumanChoice().toLowerCase();
-  //   playRound(getHumanChoice().toLowerCase(), getComputerChoice().toLowerCase());
-  playRound("rock", getComputerChoice().toLowerCase());
+  playRound(getHumanChoice().toLowerCase(), getComputerChoice().toLowerCase());
+  //playRound("rock", getComputerChoice().toLowerCase());
 
   console.log(
     `${"your score: " + humanScore + " Computer's score: " + computerScore}`
